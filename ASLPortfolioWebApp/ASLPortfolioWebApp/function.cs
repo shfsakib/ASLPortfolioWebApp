@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -9,8 +12,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using Image = System.Drawing.Image;
 
-namespace GarageFindingApp.DAL
+namespace ASLPortfolioWebApp
 {
     public class function
     {
@@ -207,13 +211,60 @@ namespace GarageFindingApp.DAL
             string alert = @"Swal.fire({  position: 'center',  icon: '" + type + "',title: '" + msg + "',showConfirmButton:'" + confirm + "',timer:'" + timer + "'})";
             ScriptManager.RegisterStartupScript(page, page.GetType(), "Popup", alert, true);
         }
+        public void ConfirmationAlert(Page page, string msg, string yesAction, string noAction)
+        {
 
+            string alert = @"Swal.fire({position: 'center', title: '" + msg + "', " +
+                           "showDenyButton: true," +
+                           "showCancelButton: true," +
+                           "confirmButtonText: 'Yes'," +
+                           "denyButtonText: 'No'," + @"}).then((result) => {
+  if (result.isConfirmed) {
+    " + yesAction + @"
+  } else if (result.isDenied) {
+   " + noAction + @"}
+    })";
+            ScriptManager.RegisterStartupScript(page, page.GetType(), "Popup", alert, true);
+        }
         public void PopAlert(Page page, string msg)
         {
             ScriptManager.RegisterStartupScript(page, page.GetType(), "script", "alert('" + msg + "')", true);
 
         }
-
+        public void AlertRedirect(Page page, string msg, string type, string link, bool confirm)
+        {
+            int timer = 0;
+            if (type == "s")
+            {
+                type = "success";
+            }
+            else if (type == "e")
+            {
+                type = "error";
+            }
+            else if (type == "w")
+            {
+                type = "warning";
+            }
+            if (confirm)
+            {
+                timer = 6000;
+            }
+            else
+            {
+                timer = 1500;
+            }
+            string alert = @"$(document).ready(function(){Swal.fire({  position: 'center',  icon: '" + type + "',title: '" + msg + "',showConfirmButton:'" + confirm + "',timer:'" + timer + "'});setTimeout(function(){location.replace('" + link + "')},1500);});";
+            ScriptManager.RegisterStartupScript(page, page.GetType(), "Popup", alert, true);
+        }
+        public void AlertWithRedirect(Page page, string msg, string link)
+        {
+            ScriptManager.RegisterStartupScript(page, page.GetType(), "script", "alert('" + msg + "');setTimeout(function(){location.replace('" + link + "')},1200);", true);
+        }
+        public void Redirect(Page page, string link)
+        {
+            ScriptManager.RegisterStartupScript(page, page.GetType(), "script", "setTimeout(function(){location.replace('" + link + "')},100);", true);
+        }
         public bool EmailValidation(string email)
         {
             try
@@ -347,13 +398,128 @@ namespace GarageFindingApp.DAL
             var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
             return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
         }
+        public string ImageToBase64(Image image,
+            System.Drawing.Imaging.ImageFormat format)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                // Convert Image to byte[]
+                image.Save(ms, format);
+                byte[] imageBytes = ms.ToArray();
 
+                // Convert byte[] to Base64 String
+                string base64String = Convert.ToBase64String(imageBytes);
+                return base64String;
+            }
+        }
+
+        public Image Base64ToImage(string base64String)
+        {
+            // Convert Base64 String to byte[]
+            byte[] imageBytes = Convert.FromBase64String(base64String);
+            MemoryStream ms = new MemoryStream(imageBytes, 0,
+                imageBytes.Length);
+
+            // Convert byte[] to Image
+            ms.Write(imageBytes, 0, imageBytes.Length);
+            Image image = Image.FromStream(ms, true);
+            return image;
+        }
+        public string SaveBase64ToImage(string base64String)
+        {
+            Random random = new Random();
+            string ran = random.Next(1111, 999999).ToString();
+            string imageData = base64String;
+            imageData = imageData.Substring(imageData.LastIndexOf(',') + 1);
+            // Convert Base64 String to byte[]
+            byte[] imageBytes = Convert.FromBase64String(imageData);
+            MemoryStream ms = new MemoryStream(imageBytes, 0,
+                imageBytes.Length);
+
+            // Convert byte[] to Image
+            ms.Write(imageBytes, 0, imageBytes.Length);
+            Image image = Image.FromStream(ms, true);
+            string filePath = HttpContext.Current.Server.MapPath("/photos/") + ran + ".png"; ;
+            image.Save(filePath, ImageFormat.Png);
+            return "/photos/" + ran + ".png";
+        }
+        public string SaveBase64ToImageWithPath(string path, string base64String)
+        {
+            Random random = new Random();
+            string ran = random.Next(1111, 999999).ToString();
+            string imageData = base64String;
+            imageData = imageData.Substring(imageData.LastIndexOf(',') + 1);
+            // Convert Base64 String to byte[]
+            byte[] imageBytes = Convert.FromBase64String(imageData);
+            MemoryStream ms = new MemoryStream(imageBytes, 0,
+                imageBytes.Length);
+
+            // Convert byte[] to Image
+            ms.Write(imageBytes, 0, imageBytes.Length);
+            Image image = Image.FromStream(ms, true);
+            string filePath = HttpContext.Current.Server.MapPath(path) + ran + ".png"; ;
+            image.Save(filePath, ImageFormat.Png);
+            return path + ran + ".png";
+        }
+
+        public bool InsertPermission()
+        {
+            bool ans = false;
+            string x = IsExist($@"SELECT        RoleActions.[Insert]
+FROM            RoleActions INNER JOIN
+                         Roles ON RoleActions.RoleId = Roles.RoleId WHERE Roles.RoleName='{TypeCookie()}'");
+            if (x == "1")
+            {
+                ans = true;
+            }
+
+            return ans;
+        }
+        public bool UpdatePermission()
+        {
+            bool ans = false;
+            string x = IsExist($@"SELECT        RoleActions.[Update]
+FROM            RoleActions INNER JOIN
+                         Roles ON RoleActions.RoleId = Roles.RoleId WHERE Roles.RoleName='{TypeCookie()}'");
+            if (x == "1")
+            {
+                ans = true;
+            }
+
+            return ans;
+        }
+        public bool DeletePermission()
+        {
+            bool ans = false;
+            string x = IsExist($@"SELECT        RoleActions.[Delete]
+FROM            RoleActions INNER JOIN
+                         Roles ON RoleActions.RoleId = Roles.RoleId WHERE Roles.RoleName='{TypeCookie()}'");
+            if (x == "1")
+            {
+                ans = true;
+            }
+
+            return ans;
+        }
+        public bool ViewPermission()
+        {
+            bool ans = false;
+            string x = IsExist($@"SELECT        RoleActions.[View]
+FROM            RoleActions INNER JOIN
+                         Roles ON RoleActions.RoleId = Roles.RoleId WHERE Roles.RoleName='{TypeCookie()}'");
+            if (x == "1")
+            {
+                ans = true;
+            }
+
+            return ans;
+        }
         public void CheckCookies()
         {
             HttpCookie cookies = HttpContext.Current.Request.Cookies["GarageInfo"];
             if (cookies == null)
             {
-                HttpContext.Current.Response.Redirect("/user/Default.aspx", true);
+                HttpContext.Current.Response.Redirect("/admin/log-in.aspx", true);
             }
         }
 
@@ -362,7 +528,7 @@ namespace GarageFindingApp.DAL
             HttpCookie cookie = function.CreateCookie();
             cookie.Expires = DateTime.Now.AddDays(-1);
             HttpContext.Current.Response.Cookies.Add(cookie);
-            HttpContext.Current.Response.Redirect("/user/Default.aspx");
+            HttpContext.Current.Response.Redirect("/admin/log-in.aspx");
         }
         public string UserIdCookie()
         {
@@ -398,17 +564,23 @@ namespace GarageFindingApp.DAL
         public void CheckTypeCookie(Page page, string type)
         {
             HttpCookie cookies = GetCookie();
-            if (cookies["Type"] != type)
+            if (cookies == null)
             {
-                HttpContext.Current.Response.Redirect("/log-in.aspx");
+                HttpContext.Current.Response.Redirect("/admin/log-in.aspx");
             }
-
+            else
+            {
+                if (cookies["Type"] != type)
+                {
+                    HttpContext.Current.Response.Redirect("/admin/log-in.aspx");
+                }
+            }
         }
 
         public static HttpCookie CreateCookie()
         {
             HttpCookie cookie = new HttpCookie("GarageInfo");
-            if (cookie==null || cookie?.Value=="")
+            if (cookie == null || cookie?.Value == "")
             {
                 cookie = null;
             }
@@ -434,7 +606,7 @@ namespace GarageFindingApp.DAL
             }
             else
             {
-                HttpContext.Current.Response.Redirect("/user/Default.aspx");
+                HttpContext.Current.Response.Redirect("/admin/log-in.aspx");
             }
         }
 

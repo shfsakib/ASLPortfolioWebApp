@@ -26,43 +26,43 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in</p>
-
                 <form runat="server">
-                    <div class="input-group mb-3">
-                        <input type="email" runat="server" id="txtEmail" autocomplete="off" class="form-control" placeholder="Email" />
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
+                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <div class="input-group mb-3">
+                                <input type="email" runat="server" id="txtEmail" autocomplete="off" class="form-control" placeholder="Email" />
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-envelope"></span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" runat="server" id="txtPass" autocomplete="off" class="form-control" placeholder="Password" />
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
+                            <div class="input-group mb-3">
+                                <input type="password" runat="server" id="txtPass" autocomplete="off" class="form-control" placeholder="Password" />
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-lock"></span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- /.col -->
-                        <div class="col-12">
-                            <button type="submit" runat="server" id="btnLogin" onserverclick="btnLogin_ServerClick" class="btn btn-primary btn-block">Sign In</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
+                            <div class="row">
+                                <!-- /.col -->
+                                <div class="col-12">
+                                    <button type="submit" runat="server" id="btnLogin" onserverclick="btnLogin_ServerClick" class="btn btn-primary btn-block">Sign In</button>
+                                </div>
+                                <!-- /.col -->
+                            </div>
 
-                    <!-- /.social-auth-links -->
-
-                    <p class="mb-1">
-                        <asp:LinkButton ID="lnkForgot" runat="server" OnClick="lnkForgot_Click">I forgot my password</asp:LinkButton>
-                    </p>
-                    <p class="mb-0">
-                        <a href="sign-up.aspx" class="text-center">Register here</a>
-                    </p>
-                     <p class="mb-0">
-                        <a href="/web/home.aspx" class="text-center">Go home</a>
-                    </p>
+                            <!-- /.social-auth-links -->
+                            <p class="mb-0">
+                                <a href="/web/home.aspx" class="text-center">Go to website</a>
+                            </p>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="btnLogin" />
+                        </Triggers>
+                    </asp:UpdatePanel>
                 </form>
             </div>
             <!-- /.login-card-body -->
@@ -76,5 +76,10 @@
     <script src="/Link/log-in/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="/Link/log-in/dist/js/adminlte.min.js"></script>
+    <%-- sweet alert --%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.12.0/sweetalert2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.12.0/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.12.0/sweetalert2.css" />
+
 </body>
 </html>

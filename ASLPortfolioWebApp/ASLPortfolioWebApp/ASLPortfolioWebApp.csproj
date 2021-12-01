@@ -66,6 +66,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\add-photos.aspx" />
+    <Content Include="admin\manage-portfolio.aspx" />
+    <Content Include="admin\manage-role-action.aspx" />
+    <Content Include="admin\manage-role.aspx" />
+    <Content Include="admin\manage-user.aspx" />
+    <Content Include="admin\profile.aspx" />
+    <Content Include="admin\update-portfolio.aspx" />
+    <Content Include="admin\update-role-action.aspx" />
+    <Content Include="admin\update-role.aspx" />
+    <Content Include="Link\portfolio.png" />
     <Content Include="packages.config" />
     <Content Include="Link\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Link\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
@@ -80,6 +90,7 @@
     <Content Include="Link\bower_components\Ionicons\fonts\ionicons28b5.eot" />
     <Content Include="Link\bower_components\Ionicons\fonts\ionicons28b5.ttf" />
     <Content Include="Link\bower_components\Ionicons\fonts\ionicons28b5.woff" />
+    <Content Include="admin\root.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -288,6 +299,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\add-photos.aspx.cs">
+      <DependentUpon>add-photos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\add-photos.aspx.designer.cs">
+      <DependentUpon>add-photos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\log-in.aspx.cs">
       <DependentUpon>log-in.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -295,10 +313,75 @@
     <Compile Include="admin\log-in.aspx.designer.cs">
       <DependentUpon>log-in.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\manage-portfolio.aspx.cs">
+      <DependentUpon>manage-portfolio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manage-portfolio.aspx.designer.cs">
+      <DependentUpon>manage-portfolio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\manage-role-action.aspx.cs">
+      <DependentUpon>manage-role-action.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manage-role-action.aspx.designer.cs">
+      <DependentUpon>manage-role-action.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\manage-role.aspx.cs">
+      <DependentUpon>manage-role.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manage-role.aspx.designer.cs">
+      <DependentUpon>manage-role.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\manage-user.aspx.cs">
+      <DependentUpon>manage-user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manage-user.aspx.designer.cs">
+      <DependentUpon>manage-user.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\profile.aspx.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\profile.aspx.designer.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\root.Master.cs">
+      <DependentUpon>root.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\root.Master.designer.cs">
+      <DependentUpon>root.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\update-portfolio.aspx.cs">
+      <DependentUpon>update-portfolio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\update-portfolio.aspx.designer.cs">
+      <DependentUpon>update-portfolio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\update-role-action.aspx.cs">
+      <DependentUpon>update-role-action.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\update-role-action.aspx.designer.cs">
+      <DependentUpon>update-role-action.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\update-role.aspx.cs">
+      <DependentUpon>update-role.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\update-role.aspx.designer.cs">
+      <DependentUpon>update-role.aspx</DependentUpon>
+    </Compile>
     <Compile Include="function.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="photos\portfolio\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -27,6 +27,11 @@ namespace ASLPortfolioWebApp.admin
                 }
                 else
                 {
+                    if (!func.InsertPermission())
+                    {
+                        func.AlertWithRedirect(this, "You don\\'t have insert permission", "/admin/log-in.aspx");
+                        return;
+                    }
                     Load();
                 }
             }

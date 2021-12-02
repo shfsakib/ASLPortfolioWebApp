@@ -29,6 +29,11 @@ namespace ASLPortfolioWebApp.admin
                 }
                 else
                 {
+                    if (!func.UpdatePermission())
+                    {
+                        func.AlertWithRedirect(this, "You don\\'t have update permission", "/admin/manage-role.aspx");
+                        return;
+                    }
                     txtRoleName.Text = func.IsExist($@"SELECT RoleName FROM Roles WHERE RoleId='{Session["roleId"].ToString()}'");
                 }
             }

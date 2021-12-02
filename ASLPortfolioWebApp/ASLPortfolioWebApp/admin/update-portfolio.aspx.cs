@@ -26,6 +26,11 @@ namespace ASLPortfolioWebApp.admin
                 }
                 else
                 {
+                    if (!func.UpdatePermission())
+                    {
+                        func.AlertWithRedirect(this, "You don\\'t have update permission", "/admin/manage-portfolio.aspx");
+                        return;
+                    }
                     Load();
                 }
             }

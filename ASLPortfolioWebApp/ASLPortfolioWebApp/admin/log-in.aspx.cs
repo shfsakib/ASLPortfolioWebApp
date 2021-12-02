@@ -55,6 +55,7 @@ namespace ASLPortfolioWebApp.admin
             }
             else
             {
+                
                 string password = func.IsExist($"SELECT Password FROM Users WHERE Email='{txtEmail.Value}' AND Password='{txtPass.Value}' COLLATE Latin1_General_CS_AI");
 
                 if (password == txtPass.Value.Trim())

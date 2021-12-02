@@ -35,7 +35,7 @@ namespace ASLPortfolioWebApp.admin
         private void Load()
         {
             int id = Convert.ToInt32(Request.QueryString["id"]);
-            func.LoadGrid(gridPhotos, "SELECT * FROM PortfolioPicture WHERE PortfolioId = '" + id + "'");
+            func.LoadGrid(gridPhotos, "SELECT * FROM PortfolioPicture WHERE PortfolioId = '" + id + "' ORDER BY PicId DESC");
         }
         protected void gridPhotos_OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {

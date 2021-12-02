@@ -119,13 +119,14 @@ namespace ASLPortfolioWebApp.admin
         {
             LinkButton linkButton = (LinkButton)sender;
             HiddenField id = (HiddenField)linkButton.Parent.FindControl("id");
-
+            Response.Redirect("/admin/portfolio-details.aspx?id="+id.Value);
         }
 
         protected void lnkUpdate_OnClick(object sender, EventArgs e)
         {
             LinkButton linkButton = (LinkButton)sender;
             HiddenField id = (HiddenField)linkButton.Parent.FindControl("id");
+            Response.Redirect("/admin/update-portfolio.aspx?id=" + id.Value);
 
         }
     }

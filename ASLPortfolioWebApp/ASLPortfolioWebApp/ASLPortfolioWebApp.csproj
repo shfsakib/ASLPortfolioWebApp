@@ -71,11 +71,13 @@
     <Content Include="admin\manage-role-action.aspx" />
     <Content Include="admin\manage-role.aspx" />
     <Content Include="admin\manage-user.aspx" />
+    <Content Include="admin\portfolio-details.aspx" />
     <Content Include="admin\profile.aspx" />
     <Content Include="admin\update-portfolio.aspx" />
     <Content Include="admin\update-role-action.aspx" />
     <Content Include="admin\update-role.aspx" />
     <Content Include="Link\portfolio.png" />
+    <Content Include="Link\style.js" />
     <Content Include="packages.config" />
     <Content Include="Link\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Link\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
@@ -340,6 +342,13 @@
     </Compile>
     <Compile Include="admin\manage-user.aspx.designer.cs">
       <DependentUpon>manage-user.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\portfolio-details.aspx.cs">
+      <DependentUpon>portfolio-details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\portfolio-details.aspx.designer.cs">
+      <DependentUpon>portfolio-details.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\profile.aspx.cs">
       <DependentUpon>profile.aspx</DependentUpon>

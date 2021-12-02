@@ -37,19 +37,20 @@ namespace ASLPortfolioWebApp
                 con = new SqlConnection(Connection);
             }
         }
-        public String Connection = new SqlConnectionStringBuilder
-        {
-            DataSource = ".\\local",
-            InitialCatalog = "PortfolioDb",
-            UserID = "sa",
-            Password = "ShfS@kib16",
-            MultipleActiveResultSets = true,
-            Pooling = true,
-            MinPoolSize = 0,
-            MaxPoolSize = 4000,
-            ConnectTimeout = 0
-        }.ToString();
-        // public string Connection = @"Data Source=.\local;Initial Catalog=GarageDb;Integrated Security=True";
+
+        //public String Connection = new SqlConnectionStringBuilder
+        //{
+        //    DataSource = ".\\local",
+        //    InitialCatalog = "PortfolioDb",
+        //    UserID = "sa",
+        //    Password = "ShfS@kib16",
+        //    MultipleActiveResultSets = true,
+        //    Pooling = true,
+        //    MinPoolSize = 0,
+        //    MaxPoolSize = 4000,
+        //    ConnectTimeout = 0
+        //}.ToString();
+        public string Connection = @"Data Source=.\local;Initial Catalog=PortfolioDb;User ID=sa;Password=ShfS@kib16";
         public void BindDropDown(DropDownList ddl, string root, string query)
         {
             con = new SqlConnection(Connection);
@@ -128,9 +129,12 @@ namespace ASLPortfolioWebApp
                 SqlCommand cmd = new SqlCommand(str, con);
                 SqlDataReader DR = cmd.ExecuteReader();
                 while (DR.Read())
+                {
                     result = DR[0].ToString();
+                }
                 DR.Close();
                 if (con.State != ConnectionState.Closed) con.Close();
+
             }
             catch (Exception ex)
             {
@@ -264,6 +268,10 @@ namespace ASLPortfolioWebApp
         public void Redirect(Page page, string link)
         {
             ScriptManager.RegisterStartupScript(page, page.GetType(), "script", "setTimeout(function(){location.replace('" + link + "')},100);", true);
+        }
+        public void JqueryCommand(Page page, string command)
+        {
+            ScriptManager.RegisterStartupScript(page, page.GetType(), "script", command, true);
         }
         public bool EmailValidation(string email)
         {

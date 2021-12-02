@@ -39,6 +39,10 @@
                         <div class="col-md-3"></div>
 
                     </div>
+                    <% if (!func.InsertPermission() && !func.ViewPermission())
+                        { %>
+                    <h3>You are not allowed to insert or view data</h3>
+                    <% } %>
                     <div class="row">
                         <div class="col-md-12 table-responsive">
                             <% if (func.ViewPermission())
@@ -60,7 +64,7 @@
                                         <ItemTemplate>
                                             <asp:DataList ID="dataImage" runat="server" RepeatColumns="3">
                                                 <ItemTemplate>
-                                                    <asp:Image ID="Image11" Width="50px" Height="50px" ImageUrl='<%#Eval("Picture")%>' runat="server" />
+                                                    <asp:Image ID="Image11" Width="50px" Height="50px" Style="padding: 10px;" ImageUrl='<%#Eval("Picture")%>' runat="server" />
                                                 </ItemTemplate>
                                             </asp:DataList>
                                         </ItemTemplate>

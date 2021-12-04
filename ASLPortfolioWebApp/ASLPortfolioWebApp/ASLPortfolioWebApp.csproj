@@ -78,6 +78,14 @@
     <Content Include="admin\update-role.aspx" />
     <Content Include="Link\portfolio.png" />
     <Content Include="Link\style.js" />
+    <Content Include="Link\website\css\style.css" />
+    <Content Include="Link\website\images\fb.png" />
+    <Content Include="Link\website\images\gplus.png" />
+    <Content Include="Link\website\images\twitter.png" />
+    <Content Include="Link\website\images\user.png" />
+    <Content Include="Link\website\images\wordpress.png" />
+    <Content Include="Link\website\js\style.js" />
+    <Content Include="Link\website\stockvideo\video.mp4" />
     <Content Include="packages.config" />
     <Content Include="Link\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Link\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
@@ -99,6 +107,11 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="web\about.aspx" />
+    <Content Include="web\contact.aspx" />
+    <Content Include="web\home.aspx" />
+    <Content Include="web\portfolio.aspx" />
+    <Content Include="web\web.Master" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\log-in.aspx" />
@@ -387,6 +400,41 @@
     </Compile>
     <Compile Include="function.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="web\about.aspx.cs">
+      <DependentUpon>about.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="web\about.aspx.designer.cs">
+      <DependentUpon>about.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="web\contact.aspx.cs">
+      <DependentUpon>contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="web\contact.aspx.designer.cs">
+      <DependentUpon>contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="web\home.aspx.cs">
+      <DependentUpon>home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="web\home.aspx.designer.cs">
+      <DependentUpon>home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="web\portfolio.aspx.cs">
+      <DependentUpon>portfolio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="web\portfolio.aspx.designer.cs">
+      <DependentUpon>portfolio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="web\web.Master.cs">
+      <DependentUpon>web.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="web\web.Master.designer.cs">
+      <DependentUpon>web.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="photos\portfolio\" />

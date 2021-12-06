@@ -7,15 +7,15 @@
     <title>Log in</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/Link/garage.png" type="image/gif" sizes="16x16" />
+    <link rel="icon" href="../Link/portfolio.png" type="image/gif" sizes="16x16" />
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback" />
     <!-- Font Awesome -->
-    <script src="Link/font-awesome.js"></script>
+    <script src="../Link/font-awesome.js"></script>
     <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="/Link/log-in/plugins/icheck-bootstrap/icheck-bootstrap.min.css" />
+    <link rel="stylesheet" href="../Link/log-in/plugins/icheck-bootstrap/icheck-bootstrap.min.css" />
     <!-- Theme style -->
-    <link rel="stylesheet" href="/Link/log-in/dist/css/adminlte.min.css" />
+    <link rel="stylesheet" href="../Link/log-in/dist/css/adminlte.min.css" />
 </head>
 <body class="hold-transition login-page">
     <div class="login-box">
@@ -71,11 +71,11 @@
     <!-- /.login-box -->
 
     <!-- jQuery -->
-    <script src="/Link/log-in/plugins/jquery/jquery.min.js"></script>
+    <script src="../Link/log-in/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="/Link/log-in/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../Link/log-in/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="/Link/log-in/dist/js/adminlte.min.js"></script>
+    <script src="../Link/log-in/dist/js/adminlte.min.js"></script>
     <%-- sweet alert --%>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.12.0/sweetalert2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.12.0/sweetalert2.all.min.js"></script>

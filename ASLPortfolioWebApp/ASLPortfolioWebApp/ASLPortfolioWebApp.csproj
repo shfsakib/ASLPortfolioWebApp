@@ -79,6 +79,7 @@
     <Content Include="Link\portfolio.png" />
     <Content Include="Link\style.js" />
     <Content Include="Link\website\css\style.css" />
+    <Content Include="Link\website\font\font.css" />
     <Content Include="Link\website\images\fb.png" />
     <Content Include="Link\website\images\gplus.png" />
     <Content Include="Link\website\images\twitter.png" />
@@ -101,6 +102,20 @@
     <Content Include="Link\bower_components\Ionicons\fonts\ionicons28b5.ttf" />
     <Content Include="Link\bower_components\Ionicons\fonts\ionicons28b5.woff" />
     <Content Include="admin\root.Master" />
+    <Content Include="Link\website\font\SansSerifBldFLF-Italic.woff" />
+    <Content Include="Link\website\font\SansSerifBldFLF.woff" />
+    <Content Include="Link\website\font\SansSerifBldFLFCond-Italic.woff" />
+    <Content Include="Link\website\font\SansSerifBldFLFCond.woff" />
+    <Content Include="Link\website\font\SansSerifBookFLF-Italic.woff" />
+    <Content Include="Link\website\font\SansSerifBookFLF.woff" />
+    <Content Include="Link\website\font\SansSerifExbFLF-Italic.woff" />
+    <Content Include="Link\website\font\SansSerifExbFLF.woff" />
+    <Content Include="Link\website\font\SansSerifExbFLFCond-Italic.woff" />
+    <Content Include="Link\website\font\SansSerifExbFLFCond.woff" />
+    <Content Include="Link\website\font\SansSerifFLF-Demibold.woff" />
+    <Content Include="Link\website\font\SansSerifFLF-DemiItalic.woff" />
+    <Content Include="Link\website\font\SansSerifFLF-Italic.woff" />
+    <Content Include="Link\website\font\SansSerifFLF.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -110,6 +125,7 @@
     <Content Include="web\about.aspx" />
     <Content Include="web\contact.aspx" />
     <Content Include="web\home.aspx" />
+    <Content Include="web\portfolio-details.aspx" />
     <Content Include="web\portfolio.aspx" />
     <Content Include="web\web.Master" />
   </ItemGroup>
@@ -420,6 +436,13 @@
     </Compile>
     <Compile Include="web\home.aspx.designer.cs">
       <DependentUpon>home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="web\portfolio-details.aspx.cs">
+      <DependentUpon>portfolio-details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="web\portfolio-details.aspx.designer.cs">
+      <DependentUpon>portfolio-details.aspx</DependentUpon>
     </Compile>
     <Compile Include="web\portfolio.aspx.cs">
       <DependentUpon>portfolio.aspx</DependentUpon>

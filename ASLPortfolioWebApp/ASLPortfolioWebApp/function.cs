@@ -263,7 +263,7 @@ namespace ASLPortfolioWebApp
         }
         public void AlertWithRedirect(Page page, string msg, string link)
         {
-            ScriptManager.RegisterStartupScript(page, page.GetType(), "script", "alert('" + msg + "');setTimeout(function(){location.replace('" + link + "')},1200);", true);
+            ScriptManager.RegisterStartupScript(page, page.GetType(), "script", "alert('" + msg + "');setTimeout(function(){location.replace('" + link + "')},100);", true);
         }
         public void Redirect(Page page, string link)
         {
@@ -325,7 +325,26 @@ namespace ASLPortfolioWebApp
                 if (con.State != ConnectionState.Closed) con.Close();
             }
         }
-
+        public void LoadRepeater(Repeater ob, string query)
+        {
+            DataTable table = new DataTable();
+            SqlConnection con = new SqlConnection(Connection);
+            try
+            {
+                ob.Visible = true;
+                if (con.State != ConnectionState.Open) con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(table);
+                ob.DataSource = table;
+                ob.DataBind();
+                if (con.State != ConnectionState.Closed) con.Close();
+            }
+            catch (Exception ex)
+            {
+                if (con.State != ConnectionState.Closed) con.Close();
+            }
+        }
         public bool MobileNoValidation(string mobileNo)
         {
             try
@@ -528,6 +547,14 @@ FROM            RoleActions INNER JOIN
             if (cookies == null)
             {
                 HttpContext.Current.Response.Redirect("/admin/log-in.aspx", true);
+            }
+            else if (cookies != null)
+            {
+                string x = IsExist($"SELECT UserId FROM Users where UserId='{UserIdCookie()}'");
+                if (x == "")
+                {
+                    Logout();
+                }
             }
         }
 

@@ -1,5 +1,4 @@
 ﻿
-@import url('http://fonts.cdnfonts.com/css/sansserifflf');
 
 /*font-family: 'SansSerifFLF', sans-serif;
  font-family: 'SansSerifBldFLF', sans-serif;
@@ -8,6 +7,7 @@
 font-family: 'SansSerifExbFLF', sans-serif; 
 font-family: 'SansSerifExbFLFCond', sans-serif;
  font-family: 'SansSerifBldFLF-Italic', sans-serif;*/
+@import url('../font/font.css');
 
 :root {
     --primary-color: darkcyan;
@@ -40,7 +40,7 @@ body {
     height: 100%;
     overflow-x: hidden;
     background: var(--white);
-    font-family: SansSerifFLF;
+    font-family: SansSerifFLF !important;
     scroll-behavior: smooth;
 }
 
@@ -893,8 +893,7 @@ table > thead {
 table > tbody > tr {
     color: var(--light-black);
     background: var(--white);
-    font-weight: 600;
-    border-bottom: 1px solid var(--light-grey);
+    font-weight: 600; 
 }
 
 .wd-300 {
@@ -1086,7 +1085,7 @@ input[type=email] {
     background: var(--color-white);
     border-radius: 5px;
     border: 1px solid gainsboro;
-    margin: 0 10px 30px 10px; 
+    margin: 0 10px 30px 10px;
     cursor: pointer;
 }
 
@@ -1140,14 +1139,22 @@ input[type=email] {
     font-weight: bolder;
     font-family: 'SansSerifBldFLF', sans-serif;
 }
-.floating-text-div h1 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: block; 
-}
+
+    .floating-text-div h1 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+    }
+
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'SansSerifBldFLF', sans-serif;
+    font-weight: bolder !important;
+}
+
+.large-img {
+    width: 100%;
+    height: 400px;
+    aspect-ratio: 3 / 5 !important;
 }
 
 .carousel-item {
@@ -1468,6 +1475,7 @@ h1, h2, h3, h4, h5, h6 {
 .color-green {
     color: #15ED8C !important;
 }
+
 .color-sky {
     color: #1AB0EF !important;
 }
@@ -1515,8 +1523,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* end */
-
-
+ 
 /* width */
 
 .wd-30 {

@@ -57,7 +57,7 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Description">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblDescription" Style="display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" runat="server" Text='<%#Eval("Description")%>'></asp:Label>
+                                            <asp:Label ID="lblDescription" Style="overflow: hidden;text-align: justify; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; line-height: 1.5em; height: 7.5em;" runat="server" Text='<%#Eval("Description")%>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Picture">

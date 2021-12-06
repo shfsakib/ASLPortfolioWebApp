@@ -29,13 +29,13 @@ namespace ASLPortfolioWebApp.admin
                     }
                     else
                     {
-                        Response.Redirect("/admin/add-portfolio.aspx");
+                        Response.Redirect("/admin/manage-portfolio.aspx");
                     }
                 }
                 else
                 {
                     txtEmail.Focus();
-                }   
+                }
             }
         }
 
@@ -43,7 +43,7 @@ namespace ASLPortfolioWebApp.admin
         {
             if (txtEmail.Value == "")
             {
-                func.Alert(this, "Email is required","w",false);
+                func.Alert(this, "Email is required", "w", false);
             }
             else if (!func.EmailValidation(txtEmail.Value))
             {
@@ -55,35 +55,43 @@ namespace ASLPortfolioWebApp.admin
             }
             else
             {
-                
-                string password = func.IsExist($"SELECT Password FROM Users WHERE Email='{txtEmail.Value}' AND Password='{txtPass.Value}' COLLATE Latin1_General_CS_AI");
-
-                if (password == txtPass.Value.Trim())
+                try
                 {
-                    HttpCookie cookie = function.CreateCookie();
-                    cookie.Expires = DateTime.Now.AddDays(-1);
-                    HttpContext.Current.Response.Cookies.Add(cookie);
-                    cookie["Name"] = func.IsExist($"SELECT Name FROM Users WHERE Email='{txtEmail.Value}'");
-                    cookie["UserId"] =
-                       func.IsExist($"SELECT UserId FROM Users WHERE Email='{txtEmail.Value}'");
-                    cookie["Email"] = func.IsExist($"SELECT Email FROM Users WHERE Email='{txtEmail.Value}'");
-                    cookie["Picture"] = func.IsExist($"SELECT Picture FROM Users WHERE Email='{txtEmail.Value}'");
-                    cookie["Type"] = func.IsExist($"SELECT Roles.RoleName FROM Roles INNER JOIN Users ON Roles.RoleId=Users.RoleId WHERE Users.Email='{txtEmail.Value}'");
-                    cookie.Expires = DateTime.Now.AddDays(60);
-                    Response.Cookies.Add(cookie);
 
-                    if (func.TypeCookie() == "Super Admin")
+                    string password = func.IsExist($"SELECT Password FROM Users WHERE Email='{txtEmail.Value}'");
+
+                    if (password == txtPass.Value.Trim())
                     {
-                        Response.Redirect("/admin/manage-role.aspx");
+                        HttpCookie cookie = function.CreateCookie();
+                        cookie.Expires = DateTime.Now.AddDays(-1);
+                        HttpContext.Current.Response.Cookies.Add(cookie);
+                        cookie["Name"] = func.IsExist($"SELECT Name FROM Users WHERE Email='{txtEmail.Value}'");
+                        cookie["UserId"] =
+                           func.IsExist($"SELECT UserId FROM Users WHERE Email='{txtEmail.Value}'");
+                        cookie["Email"] = func.IsExist($"SELECT Email FROM Users WHERE Email='{txtEmail.Value}'");
+                        cookie["Picture"] = func.IsExist($"SELECT Picture FROM Users WHERE Email='{txtEmail.Value}'");
+                        cookie["Type"] = func.IsExist($"SELECT Roles.RoleName FROM Roles INNER JOIN Users ON Roles.RoleId=Users.RoleId WHERE Users.Email='{txtEmail.Value}'");
+                        cookie.Expires = DateTime.Now.AddDays(60);
+                        Response.Cookies.Add(cookie);
+
+                        if (func.TypeCookie() == "Super Admin")
+                        {
+                            Response.Redirect("/admin/manage-role.aspx");
+                        }
+                        else
+                        {
+                            Response.Redirect("/admin/manage-portfolio.aspx");
+                        }
                     }
                     else
                     {
-                        Response.Redirect("/admin/add-portfolio.aspx");
+                        func.Alert(this, "Invalid email or password", "w", false);
                     }
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    func.Alert(this, "Invalid email or password", "w", false);
+
                 }
             }
         }

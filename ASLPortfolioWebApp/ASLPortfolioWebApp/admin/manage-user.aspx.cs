@@ -57,7 +57,8 @@ ORDER BY Users.UserId");
             else if (txtEmail.Text == "")
             {
                 func.Alert(this, "Email is required", "w", false);
-            }else if (IsEmailExist(txtEmail.Text))
+            }
+            else if (IsEmailExist(txtEmail.Text))
             {
                 func.Alert(this, "Email already exist", "w", false);
             }
@@ -117,6 +118,19 @@ ORDER BY Users.UserId");
         {
             gridUser.PageIndex = e.NewPageIndex;
             Load();
+        }
+
+        protected void gridUser_OnRowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                HiddenField userId = (HiddenField)e.Row.FindControl("HiddenField1");
+                LinkButton lnkRemove = (LinkButton)e.Row.FindControl("lnkRemove");
+                if (func.UserIdCookie() == userId.Value)
+                {
+                    lnkRemove.Visible = false;
+                }
+            }
         }
     }
 }

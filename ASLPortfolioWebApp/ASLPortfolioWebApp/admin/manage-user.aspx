@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/root.Master" AutoEventWireup="true" CodeBehind="manage-user.aspx.cs" Inherits="ASLPortfolioWebApp.admin.manage_user" %>
 
+<%@ Import Namespace="ASLPortfolioWebApp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -43,7 +45,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 table-responsive">
-                            <asp:GridView ID="gridUser" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridUser_OnPageIndexChanging" AutoGenerateColumns="False" ShowHeader="True" ShowHeaderWhenEmpty="True" EmptyDataText="No Users Found" AllowPaging="True" PageSize="30" runat="server">
+                            <asp:GridView ID="gridUser" Width="100%" class="table table-hover table-bordered table-striped" OnPageIndexChanging="gridUser_OnPageIndexChanging" OnRowDataBound="gridUser_OnRowDataBound" AutoGenerateColumns="False" ShowHeader="True" ShowHeaderWhenEmpty="True" EmptyDataText="No Users Found" AllowPaging="True" PageSize="30" runat="server">
                                 <Columns>
                                     <asp:TemplateField HeaderText="User_Name">
                                         <ItemTemplate>
@@ -67,8 +69,9 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Action">
-                                        <ItemTemplate>
+                                        <ItemTemplate> 
                                             <asp:LinkButton ID="lnkRemove" class="btn btn-danger" OnClick="lnkRemove_OnClick" runat="server" ToolTip="Remove"><i class="fas fa-trash-alt fa-lg"></i></asp:LinkButton>
+         
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>

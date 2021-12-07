@@ -83,5 +83,20 @@ namespace ASLPortfolioWebApp.admin
                 func.Alert(this, "Failed to remove role name", "e", false);
             }
         }
+
+        protected void gridRole_OnRowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                HiddenField hiddenRoleId = (HiddenField)e.Row.FindControl("hiddenRoleId");
+                Label lblRoleName = (Label)e.Row.FindControl("lblRoleName");
+                LinkButton lnkUpdate = (LinkButton)e.Row.FindControl("lnkUpdate");
+                LinkButton lnkRemove = (LinkButton)e.Row.FindControl("lnkRemove");
+                if (lblRoleName.Text == "Super Admin")
+                {
+                    lnkUpdate.Visible = lnkRemove.Visible = false;
+                }
+            }
+        }
     }
 }

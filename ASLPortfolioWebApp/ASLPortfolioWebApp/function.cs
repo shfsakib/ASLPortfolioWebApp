@@ -134,13 +134,13 @@ namespace ASLPortfolioWebApp
                 }
                 if (con.State != ConnectionState.Closed) con.Close();
                 DR.Close();
-
+                return result;
             }
             catch (Exception ex)
             {
                 if (con.State != ConnectionState.Closed) con.Close();
-            }
-            return result;
+                return result;
+            } 
         }
         public bool ValidDate(TextBox date)
         {

@@ -116,6 +116,7 @@
     <Content Include="Link\website\font\SansSerifFLF-DemiItalic.woff" />
     <Content Include="Link\website\font\SansSerifFLF-Italic.woff" />
     <Content Include="Link\website\font\SansSerifFLF.woff" />
+    <None Include="Properties\PublishProfiles\portfolio.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

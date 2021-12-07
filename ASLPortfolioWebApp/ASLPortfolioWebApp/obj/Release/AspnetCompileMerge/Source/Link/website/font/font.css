@@ -1,0 +1,100 @@
+/*font-style: normal;
+      font-weight: normal;*/
+
+@font-face {
+    font-family: 'SansSerifBldFLF-Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: url('SansSerifBldFLF-Italic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SansSerifBldFLF';
+    font-style: normal;
+    font-weight: normal;
+    src: url('SansSerifBldFLF.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SansSerifBldFLFCond-Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: url('SansSerifBldFLFCond-Italic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SansSerifBldFLFCond';
+    font-style: normal;
+    font-weight: normal;
+    src: url('SansSerifBldFLFCond.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SansSerifBookFLF-Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: url('SansSerifBookFLF-Italic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SansSerifBookFLF';
+    font-style: normal;
+    font-weight: normal;
+    src: url('SansSerifBookFLF.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SansSerifExbFLF-Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: url('SansSerifExbFLF-Italic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SansSerifExbFLF';
+    font-style: normal;
+    font-weight: normal;
+    src: url('SansSerifExbFLF.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SansSerifExbFLFCond-Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: url('SansSerifExbFLFCond-Italic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SansSerifExbFLFCond';
+    font-style: normal;
+    font-weight: normal;
+    src: url('SansSerifExbFLFCond.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SansSerifFLF-Demibold';
+    font-style: normal;
+    font-weight: normal;
+    src: url('SansSerifFLF-Demibold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SansSerifFLF-DemiItalic';
+    font-style: normal;
+    font-weight: normal;
+    src: url('SansSerifFLF-DemiItalic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SansSerifFLF-Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: url('SansSerifFLF-Italic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SansSerifFLF';
+    font-style: normal;
+    font-weight: normal;
+    src: url('SansSerifFLF.woff') format('woff');
+}

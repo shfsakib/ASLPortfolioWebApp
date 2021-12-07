@@ -17,6 +17,7 @@ namespace ASLPortfolioWebApp.admin
         {
             func = function.GetInstance();
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -41,22 +42,23 @@ namespace ASLPortfolioWebApp.admin
 
         protected void btnLogin_ServerClick(object sender, EventArgs e)
         {
-            if (txtEmail.Value == "")
+            try
             {
-                func.Alert(this, "Email is required", "w", false);
-            }
-            else if (!func.EmailValidation(txtEmail.Value))
-            {
-                func.Alert(this, "Enter valid email", "w", false);
-            }
-            else if (txtPass.Value == "")
-            {
-                func.Alert(this, "Password is required", "w", false);
-            }
-            else
-            {
-                try
+                if (txtEmail.Value == "")
                 {
+                    func.Alert(this, "Email is required", "w", false);
+                }
+                else if (!func.EmailValidation(txtEmail.Value))
+                {
+                    func.Alert(this, "Enter valid email", "w", false);
+                }
+                else if (txtPass.Value == "")
+                {
+                    func.Alert(this, "Password is required", "w", false);
+                }
+                else
+                {
+
 
                     string password = func.IsExist($"SELECT Password FROM Users WHERE Email='{txtEmail.Value}'");
 
@@ -67,10 +69,12 @@ namespace ASLPortfolioWebApp.admin
                         HttpContext.Current.Response.Cookies.Add(cookie);
                         cookie["Name"] = func.IsExist($"SELECT Name FROM Users WHERE Email='{txtEmail.Value}'");
                         cookie["UserId"] =
-                           func.IsExist($"SELECT UserId FROM Users WHERE Email='{txtEmail.Value}'");
+                            func.IsExist($"SELECT UserId FROM Users WHERE Email='{txtEmail.Value}'");
                         cookie["Email"] = func.IsExist($"SELECT Email FROM Users WHERE Email='{txtEmail.Value}'");
                         cookie["Picture"] = func.IsExist($"SELECT Picture FROM Users WHERE Email='{txtEmail.Value}'");
-                        cookie["Type"] = func.IsExist($"SELECT Roles.RoleName FROM Roles INNER JOIN Users ON Roles.RoleId=Users.RoleId WHERE Users.Email='{txtEmail.Value}'");
+                        cookie["Type"] =
+                            func.IsExist(
+                                $"SELECT Roles.RoleName FROM Roles INNER JOIN Users ON Roles.RoleId=Users.RoleId WHERE Users.Email='{txtEmail.Value}'");
                         cookie.Expires = DateTime.Now.AddDays(60);
                         Response.Cookies.Add(cookie);
 
@@ -88,11 +92,12 @@ namespace ASLPortfolioWebApp.admin
                         func.Alert(this, "Invalid email or password", "w", false);
                     }
 
-                }
-                catch (Exception ex)
-                {
 
                 }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }

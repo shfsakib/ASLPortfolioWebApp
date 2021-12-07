@@ -37,20 +37,19 @@ namespace ASLPortfolioWebApp
                 con = new SqlConnection(Connection);
             }
         }
-
-        //public String Connection = new SqlConnectionStringBuilder
-        //{
-        //    DataSource = ".\\local",
-        //    InitialCatalog = "PortfolioDb",
-        //    UserID = "sa",
-        //    Password = "ShfS@kib16",
-        //    MultipleActiveResultSets = true,
-        //    Pooling = true,
-        //    MinPoolSize = 0,
-        //    MaxPoolSize = 4000,
-        //    ConnectTimeout = 0
-        //}.ToString();
-        public string Connection = @"Data Source=.\local;Initial Catalog=PortfolioDb;User ID=sa;Password=ShfS@kib16";
+        public string Connection = new SqlConnectionStringBuilder
+        {
+            DataSource = ".\\local",
+            InitialCatalog = "PortfolioDb",
+            UserID = "sa",
+            Password = "ShfS@kib16",
+            MultipleActiveResultSets = true,
+            Pooling = true,
+            MinPoolSize = 0,
+            MaxPoolSize = 4000,
+            ConnectTimeout = 0
+        }.ToString();
+       // public string Connection = @"Data Source=.\local;Initial Catalog=PortfolioDb;User ID=sa;Password=ShfS@kib16;MultipleActiveResultSets = true;";
         public void BindDropDown(DropDownList ddl, string root, string query)
         {
             con = new SqlConnection(Connection);
@@ -125,6 +124,7 @@ namespace ASLPortfolioWebApp
             string result = "";
             try
             {
+                con=new SqlConnection(Connection);
                 if (con.State != ConnectionState.Open) con.Open();
                 SqlCommand cmd = new SqlCommand(str, con);
                 SqlDataReader DR = cmd.ExecuteReader();
@@ -132,8 +132,8 @@ namespace ASLPortfolioWebApp
                 {
                     result = DR[0].ToString();
                 }
-                DR.Close();
                 if (con.State != ConnectionState.Closed) con.Close();
+                DR.Close();
 
             }
             catch (Exception ex)
@@ -543,7 +543,7 @@ FROM            RoleActions INNER JOIN
         }
         public void CheckCookies()
         {
-            HttpCookie cookies = HttpContext.Current.Request.Cookies["GarageInfo"];
+            HttpCookie cookies = HttpContext.Current.Request.Cookies["portfolio"];
             if (cookies == null)
             {
                 HttpContext.Current.Response.Redirect("/admin/log-in.aspx", true);
@@ -614,7 +614,7 @@ FROM            RoleActions INNER JOIN
 
         public static HttpCookie CreateCookie()
         {
-            HttpCookie cookie = new HttpCookie("GarageInfo");
+            HttpCookie cookie = new HttpCookie("portfolio");
             if (cookie == null || cookie?.Value == "")
             {
                 cookie = null;
@@ -623,7 +623,7 @@ FROM            RoleActions INNER JOIN
         }
         public static HttpCookie GetCookie()
         {
-            HttpCookie cookie = HttpContext.Current.Request.Cookies["GarageInfo"];
+            HttpCookie cookie = HttpContext.Current.Request.Cookies["portfolio"];
             if (cookie == null || cookie?.Value == "")
             {
                 cookie = null;
